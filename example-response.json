@@ -1,0 +1,250 @@
+{
+    "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Resources/deployments/3b0a8daf-b14b-453c-bfb6-52649f70a652",
+    "name": "3b0a8daf-b14b-453c-bfb6-52649f70a652",
+    "properties": {
+      "templateHash": "10581379336320871470",
+      "parameters": {
+        "adminUsername": {
+          "type": "String",
+          "value": "mknowles"
+        },
+        "adminPassword": {
+          "type": "SecureString"
+        },
+        "dnsLabelPrefix": {
+          "type": "String",
+          "value": "mydnsprefix"
+        },
+        "windowsOSVersion": {
+          "type": "String",
+          "value": "2016-Datacenter"
+        },
+        "location": {
+          "type": "String",
+          "value": "eastus"
+        }
+      },
+      "mode": "Incremental",
+      "provisioningState": "Succeeded",
+      "timestamp": "2019-05-02T00:40:37.1214807Z",
+      "duration": "PT0S",
+      "correlationId": "8edc3a97-6e74-4390-b0d5-6be8d0159954",
+      "providers": [
+        {
+          "namespace": "Microsoft.Storage",
+          "resourceTypes": [
+            {
+              "resourceType": "storageAccounts",
+              "locations": [
+                "eastus"
+              ]
+            }
+          ]
+        },
+        {
+          "namespace": "Microsoft.Network",
+          "resourceTypes": [
+            {
+              "resourceType": "publicIPAddresses",
+              "locations": [
+                "eastus"
+              ]
+            },
+            {
+              "resourceType": "virtualNetworks",
+              "locations": [
+                "eastus"
+              ]
+            },
+            {
+              "resourceType": "networkInterfaces",
+              "locations": [
+                "eastus"
+              ]
+            }
+          ]
+        },
+        {
+          "namespace": "Microsoft.Compute",
+          "resourceTypes": [
+            {
+              "resourceType": "virtualMachines",
+              "locations": [
+                "eastus"
+              ]
+            }
+          ]
+        }
+      ],
+      "dependencies": [
+        {
+          "dependsOn": [
+            {
+              "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/publicIPAddresses/myPublicIP",
+              "resourceType": "Microsoft.Network/publicIPAddresses",
+              "resourceName": "myPublicIP"
+            },
+            {
+              "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/virtualNetworks/MyVNET",
+              "resourceType": "Microsoft.Network/virtualNetworks",
+              "resourceName": "MyVNET"
+            }
+          ],
+          "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/networkInterfaces/myVMNic",
+          "resourceType": "Microsoft.Network/networkInterfaces",
+          "resourceName": "myVMNic"
+        },
+        {
+          "dependsOn": [
+            {
+              "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Storage/storageAccounts/hmherayntswnesawinvm",
+              "resourceType": "Microsoft.Storage/storageAccounts",
+              "resourceName": "hmherayntswnesawinvm"
+            },
+            {
+              "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/networkInterfaces/myVMNic",
+              "resourceType": "Microsoft.Network/networkInterfaces",
+              "resourceName": "myVMNic"
+            }
+          ],
+          "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Compute/virtualMachines/SimpleWinVM",
+          "resourceType": "Microsoft.Compute/virtualMachines",
+          "resourceName": "SimpleWinVM"
+        }
+      ],
+      "validatedResources": [
+        {
+          "apiVersion": "2018-11-01",
+          "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Storage/storageAccounts/hmherayntswnesawinvm",
+          "name": "hmherayntswnesawinvm",
+          "type": "Microsoft.Storage/storageAccounts",
+          "sku": {
+            "name": "Standard_LRS"
+          },
+          "kind": "Storage",
+          "location": "eastus",
+          "properties": {}
+        },
+        {
+          "apiVersion": "2018-11-01",
+          "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/publicIPAddresses/myPublicIP",
+          "name": "myPublicIP",
+          "type": "Microsoft.Network/publicIPAddresses",
+          "location": "eastus",
+          "properties": {
+            "publicIPAllocationMethod": "Dynamic",
+            "dnsSettings": {
+              "domainNameLabel": "mydnsprefix"
+            }
+          }
+        },
+        {
+          "apiVersion": "2018-11-01",
+          "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/virtualNetworks/MyVNET",
+          "name": "MyVNET",
+          "type": "Microsoft.Network/virtualNetworks",
+          "location": "eastus",
+          "properties": {
+            "addressSpace": {
+              "addressPrefixes": [
+                "10.0.0.0/16"
+              ]
+            },
+            "subnets": [
+              {
+                "name": "Subnet",
+                "properties": {
+                  "addressPrefix": "10.0.0.0/24"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "dependsOn": [
+            "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/publicIPAddresses/myPublicIP",
+            "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/virtualNetworks/MyVNET"
+          ],
+          "apiVersion": "2018-11-01",
+          "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/networkInterfaces/myVMNic",
+          "name": "myVMNic",
+          "type": "Microsoft.Network/networkInterfaces",
+          "location": "eastus",
+          "properties": {
+            "ipConfigurations": [
+              {
+                "name": "ipconfig1",
+                "properties": {
+                  "privateIPAllocationMethod": "Dynamic",
+                  "publicIPAddress": {
+                    "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/publicIPAddresses/myPublicIP"
+                  },
+                  "subnet": {
+                    "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/virtualNetworks/MyVNET/subnets/Subnet"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "dependsOn": [
+            "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Storage/storageAccounts/hmherayntswnesawinvm",
+            "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/networkInterfaces/myVMNic"
+          ],
+          "apiVersion": "2018-10-01",
+          "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Compute/virtualMachines/SimpleWinVM",
+          "name": "SimpleWinVM",
+          "type": "Microsoft.Compute/virtualMachines",
+          "location": "eastus",
+          "properties": {
+            "hardwareProfile": {
+              "vmSize": "Standard_A2"
+            },
+            "tags": {
+              "displayName": "VM Instance",
+              "environment": "Staging",
+              "application": "App1"
+            },
+            "osProfile": {
+              "computerName": "SimpleWinVM",
+              "adminUsername": "mknowles",
+              "adminPassword": "mypassword"
+            },
+            "storageProfile": {
+              "imageReference": {
+                "publisher": "MicrosoftWindowsServer",
+                "offer": "WindowsServer",
+                "sku": "2016-Datacenter",
+                "version": "latest"
+              },
+              "osDisk": {
+                "createOption": "FromImage"
+              },
+              "dataDisks": [
+                {
+                  "diskSizeGB": 1023,
+                  "lun": 0,
+                  "createOption": "Empty"
+                }
+              ]
+            },
+            "networkProfile": {
+              "networkInterfaces": [
+                {
+                  "id": "/subscriptions/048902e9-2ac3-41a3-9c7d-822351675420/resourceGroups/mk-arm-test-rg/providers/Microsoft.Network/networkInterfaces/myVMNic"
+                }
+              ]
+            },
+            "diagnosticsProfile": {
+              "bootDiagnostics": {
+                "enabled": true,
+                "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))).primaryEndpoints.blob]"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+  
